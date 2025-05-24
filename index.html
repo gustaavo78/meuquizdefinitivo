@@ -2956,6 +2956,13 @@
                     });
                     
                     sendWhatsAppMessage(selectedProductQty);
+                    // Rastrear evento de contato do Facebook
+fbq('track', 'Contact', {
+    content_name: `Amazole Kit ${selectedProductQty} Frascos`,
+    content_category: 'Skin Care',
+    value: selectedProductQty === 2 ? 167.00 : (selectedProductQty === 3 ? 197.00 : 247.00),
+    currency: 'BRL'
+});
                 });
             }
             
@@ -3315,6 +3322,14 @@
 
         // Display personalized results
         function displayResults() {
+            // Rastrear evento de conversão do Facebook
+fbq('track', 'InitiateCheckout', {
+  content_name: 'Amazole Quiz Results',
+  content_category: 'Skin Care',
+  content_type: 'product',
+  value: 197.00,
+  currency: 'BRL'
+});
             // Get elements
             const quizContainer = document.getElementById('quiz-container');
             const resultsContainer = document.getElementById('results-container');
